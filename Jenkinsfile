@@ -4,10 +4,7 @@ pipeline {
   stages {
     stage('Run Tests') {
       steps {
-        sh 'cd hello-world'
-        sh 'npm install'
-        sh 'npm run test'
-        sh 'cd ..'
+        sh 'cd hello-world && npm install && npm run test && cd ..'
       }
     }
     stage('Install sam-cli') {
