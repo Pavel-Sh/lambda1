@@ -12,10 +12,10 @@ pipeline {
         sh 'venv/bin/sam build'
       }
     }
-    stage('prod') {
+    stage('Prod') {
       steps {
         withAWS(credentials: 'lambda-deploy', region: 'eu-central-1') {
-          sh 'venv/bin/sam deploy'
+          sh 'venv/bin/sam deploy --confirm-changeset'
         }
       }
     }
