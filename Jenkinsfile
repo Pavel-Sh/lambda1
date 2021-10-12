@@ -2,6 +2,14 @@ pipeline {
   agent any
  
   stages {
+    stage('Run Tests') {
+      steps {
+        sh 'cd hello-world'
+        sh 'npm install'
+        sh 'npm run test'
+        sh 'cd ..'
+      }
+    }
     stage('Install sam-cli') {
       steps {
         sh 'python3 -m venv venv && venv/bin/pip install aws-sam-cli'
