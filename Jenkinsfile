@@ -34,7 +34,7 @@ pipeline {
         branch 'main'
       }
       steps {
-        input{
+        input {
           message "Deploy to Production?"
         }
         withAWS(credentials: 'lambda-deploy', region: 'eu-central-1') {
