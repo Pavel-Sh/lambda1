@@ -2,6 +2,11 @@ pipeline {
   agent any
  
   stages {
+    stage('Run Linter') {
+      steps {
+        sh 'cd hello-world && npm install && npm run lint && cd ..'
+      }
+    }
     stage('Run Tests') {
       steps {
         sh 'cd hello-world && npm install && npm run test && cd ..'
