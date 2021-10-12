@@ -19,8 +19,8 @@ pipeline {
     }
     stage('Staging Deploy') {
       when {
-        expression {
-          return (env.BRANCH_NAME != 'main')
+        not {
+           branch 'main'
         }
       }
       steps {
@@ -31,9 +31,7 @@ pipeline {
     }
     stage('Prod Deploy') {
       when {
-        expression {
-          return (env.BRANCH_NAME == 'main')
-        }
+        branch 'main'
       }
       input{
         message "Deploy to Production?"
