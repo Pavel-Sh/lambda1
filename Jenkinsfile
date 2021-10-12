@@ -15,7 +15,7 @@ pipeline {
     stage('Prod') {
       steps {
         withAWS(credentials: 'lambda-deploy', region: 'eu-central-1') {
-          sh 'venv/bin/sam deploy --confirm-changeset'
+          sh 'venv/bin/sam deploy --no-confirm-changeset'
         }
       }
     }
