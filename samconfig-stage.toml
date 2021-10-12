@@ -2,8 +2,8 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "lambda1"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-vdf645qd0b4p"
+stack_name = "lambda-stage"
+s3_bucket = "pavel-lambda-stage"
 s3_prefix = "lambda1"
 region = "eu-central-1"
 confirm_changeset = true
