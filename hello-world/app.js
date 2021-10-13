@@ -5,7 +5,7 @@ exports.lambdaHandler = async () => {
     response = {
       statusCode: 200,
       body: JSON.stringify({
-        message: 'hello lambda feature2',
+        message: 'hello lambda feature3',
       }),
     };
   } catch (err) {
