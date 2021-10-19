@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { docker { image 'public.ecr.aws/sam/build-nodejs14.x' } }
  
   stages {
     stage('Run Linter') {
@@ -16,11 +16,11 @@ pipeline {
         }
       }
     }
-    stage('Install sam-cli') {
-      steps {
-        sh 'python3 -m venv venv && venv/bin/pip install aws-sam-cli'
-      }
-    }
+    // stage('Install sam-cli') {
+    //   steps {
+    //     sh 'python3 -m venv venv && venv/bin/pip install aws-sam-cli'
+    //   }
+    // }
     stage('Build') {
       steps {
         nodejs(nodeJSInstallationName: 'nodejs14.x') {
@@ -31,7 +31,8 @@ pipeline {
     stage('Staging Deploy') {
       steps {
         withAWS(credentials: 'jenkins-geoip', region: 'eu-central-1') {
-          sh 'venv/bin/sam deploy --no-confirm-changeset --config-file samconfig-stage.toml'
+          //sh 'venv/bin/sam deploy --no-confirm-changeset --config-file samconfig-stage.toml'
+          sh 'sam deploy --no-confirm-changeset --config-file samconfig-stage.toml'
         }
       }
     }
