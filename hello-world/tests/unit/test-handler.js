@@ -17,6 +17,6 @@ describe('Tests index', () => {
     const response = JSON.parse(result.body);
 
     expect(response).to.be.an('object');
-    expect(response.message).to.be.equal('hello lambda feature3');
+    expect(response.message).to.be.equal('hello lambda4');
   });
 });

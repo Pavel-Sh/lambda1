@@ -24,7 +24,7 @@ pipeline {
     }
     stage('Staging Deploy') {
       steps {
-        withAWS(credentials: 'lambda-deploy', region: 'eu-central-1') {
+        withAWS(credentials: 'jenkins-geoip', region: 'eu-central-1') {
           sh 'venv/bin/sam deploy --no-confirm-changeset --config-file samconfig-stage.toml'
         }
       }
@@ -36,7 +36,7 @@ pipeline {
       steps {
         input message: 'Deploy to Production?'
 
-        withAWS(credentials: 'lambda-deploy', region: 'eu-central-1') {
+        withAWS(credentials: 'jenkins-geoip', region: 'eu-central-1') {
           sh 'venv/bin/sam deploy --no-confirm-changeset --config-file samconfig-prod.toml'
         }
       }
