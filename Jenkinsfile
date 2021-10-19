@@ -23,7 +23,9 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'venv/bin/sam build'
+        nodejs(nodeJSInstallationName: 'nodejs14.x') {
+          sh 'venv/bin/sam build'
+        }
       }
     }
     stage('Staging Deploy') {
