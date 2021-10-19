@@ -4,12 +4,16 @@ pipeline {
   stages {
     stage('Run Linter') {
       steps {
-        sh 'cd hello-world && npm install && npm run lint && cd ..'
+        nodejs(nodeJSInstallationName: 'nodejs14.x') {
+          sh 'cd hello-world && npm install && npm run lint && cd ..'
+        }
       }
     }
     stage('Run Tests') {
       steps {
-        sh 'cd hello-world && npm install && npm run test && cd ..'
+        nodejs(nodeJSInstallationName: 'nodejs14.x') {
+          sh 'cd hello-world && npm install && npm run test && cd ..'
+        }
       }
     }
     stage('Install sam-cli') {
